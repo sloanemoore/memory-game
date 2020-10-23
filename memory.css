@@ -1,0 +1,24 @@
+h1,
+p {
+  text-align: center;
+  font-family: "Open Sans", Verdana, Geneva, Tahoma, sans-serif;
+  color: #333333;
+}
+
+div#tableContainer {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-spacing: 10px;
+}
+
+.tableRow {
+  display: table-row;
+}
+
+.pic {
+  display: table-cell;
+  /*background: #94ade5;*/
+  padding: 5px;
+}
