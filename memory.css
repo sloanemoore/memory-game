@@ -17,8 +17,26 @@ div#tableContainer {
   display: table-row;
 }
 
-.pic {
+.card {
   display: table-cell;
-  /*background: #94ade5;*/
   padding: 5px;
+}
+
+#back {
+  display: block;
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: #fbaa19;
+  padding: 15px 40px;
+  color: #666666;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.25em;
+}
+
+a {
+  text-decoration: none;
+  color: #666666;
 }

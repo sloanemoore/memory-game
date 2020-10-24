@@ -3,31 +3,39 @@
     <head>
         <meta charset="utf-8">
         <title>Memory Game</title>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="memory.css">
+        <script src="memory.js"></script>
     </head>
     <body>
         <h1>Memory Game</h1>
         <p>Select the pairs of matching cards in the fewest number of guesses.</p>
-        <p>Good luck!</p>
         <div id="tableContainer">
             <div class="tableRow">
-                <div class="pic" id="zero"><img src="MemoryCardBack.png"></div>
-                <div class="pic" id="one"><img src="MemoryCardBack.png"></div>
-                <div class="pic" id="two"><img src="MemoryCardBack.png"></div>
-                <div class="pic" id="three"><img src="MemoryCardBack.png"></div>
+                <div class="card"><img id="card00" src="MemoryCardBack.png"></div>
+                <div class="card"><img id="card01" src="MemoryCardBack.png"></div>
+                <div class="card"><img id="card02" src="MemoryCardBack.png"></div>
+                <div class="card"><img id="card03" src="MemoryCardBack.png"></div>
             </div>
             <div class="tableRow">
-                <div class="pic" id="four"><img src="MemoryCardBack.png"></div>
-                <div class="pic" id="five"><img src="MemoryCardBack.png"></div>
-                <div class="pic" id="six"><img src="MemoryCardBack.png"></div>
-                <div class="pic" id="seven"><img src="MemoryCardBack.png"></div>
+                <div class="card"><img id="card04" src="MemoryCardBack.png"></div>
+                <div class="card"><img id="card05" src="MemoryCardBack.png"></div>
+                <div class="card"><img id="card06" src="MemoryCardBack.png"></div>
+                <div class="card"><img id="card07" src="MemoryCardBack.png"></div>
             </div>
             <div class="tableRow">
-                <div class="pic" id="eight"><img src="MemoryCardBack.png"></div>
-                <div class="pic" id="nine"><img src="MemoryCardBack.png"></div>
-                <div class="pic" id="ten"><img src="MemoryCardBack.png"></div>
-                <div class="pic" id="eleven"><img src="MemoryCardBack.png"></div>
+                <div class="card"><img id="card08" src="MemoryCardBack.png"></div>
+                <div class="card"><img id="card09" src="MemoryCardBack.png"></div>
+                <div class="card"><img id="card10" src="MemoryCardBack.png"></div>
+                <div class="card"><img id="card11" src="MemoryCardBack.png"></div>
             </div>
+        </div>
+        <div id="report">
+            <p>Score: <span id="score"></span></p>
+            <p>Guesses: <span id="guesses"></span></p>
+        </div>
+        <div>
+            <button type="button" class="link" id="back"><a href="https://nowcodethis.com/">Back to Website</a></button></button>
         </div>
         </body>
 </html>
