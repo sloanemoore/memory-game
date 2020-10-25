@@ -1,16 +1,12 @@
 let controller = {
-    userGuess: Array(2),
+    userGuess: [],
     numGuesses: 0,
     numMatches: 0,
-    getUserGuess: function(eventObj) {
-        let card = eventObj.target;
-        let cardNum = Number(card.id.slice(4));
-        console.log(cardNum);
-        this.userGuess.push(cardNum);
-        console.log(this.userGuess); // push this to user guess --this doesn't work right now
-    },
-    checkUserGuess: function(userGuess) {
-        // finish this function
+    passUserGuess: function() {
+         if (this.userGuess.length === 2) { 
+            model.checkUserGuess()
+         }
+
     },
     init: function() {
         model.generateAnimalLocs();
@@ -24,28 +20,38 @@ let controller = {
 let view = {
     showCard: function(eventObj) {
         let card = eventObj.target;
-        let cardNum = Number(card.id.slice(4)); // push this to user guess
+        let cardNum = Number(card.id.slice(4)); 
         for (let i = 0; i < model.numCardPairs; i++) {
             if (model.cards[i].matchPair.includes(cardNum)) {
                 let cardPic = model.cards[i].image;
                 card.src = cardPic;
             }
         }
-        controller.numGuesses = controller.numGuesses + 1;
+        controller.userGuess.push(cardNum);
+        controller.passUserGuess();
     },
-    showNumGuesses: function(numGuesses) {
+    hideCard: function() {
+        for (let i = 0; i < controller.userGuess.length; i++) {
+            let cardNum = "card" + String(controller.userGuess[i]).padStart(2,"0");
+            let pic = document.getElementById(cardNum);
+            pic.src = model.cardBackImage;
+        }
+        controller.userGuess = [];
+    },
+    showNumGuesses: function() {
         let guessDisplay = document.getElementById("guesses");
-        guessDisplay.innerHTML = numGuesses;
+        guessDisplay.innerHTML = controller.numGuesses;
     },
     showScore: function(score) {
         let scoreDisplay = document.getElementById("score");
-        scoreDisplay.innerHTML = score;
+        scoreDisplay.innerHTML = model.score;
     }
 };
 
 let model = {
     numCardPairs: 6, 
     score: 0,
+    cardBackImage: "MemoryCardBack.png",
     cards: [{
         type: "elephant",
         image: "elephant.png",
@@ -76,19 +82,41 @@ let model = {
         matched: false,
     }
      ],
-    determineWhetherCardsAreMatched: function(userGuess) {
+    checkUserGuess: function(userGuess) { // this seems to work
+        let isUserGuessMatch= false;
         for (let i = 0; i < this.numCardPairs; i++) {
-            if (this.cards[i].matchPair.includes(userGuess)) {
+            if (this.cards[i].matchPair.includes(controller.userGuess[0]) && this.cards[i].matchPair.includes(controller.userGuess[1])) {
+                isUserGuessMatch = true;
                 this.cards[i].matched = true;
-                this.score = this.score + 1;
-                };
-        };
+                }
+            }; 
+        this.nextCardActions(isUserGuessMatch);
      },
-     determineWhetherGameIsWon: function() {
+
+     checkWhetherGameIsWon: function() {
         if (this.score === this.numCardPairs) {
-            console.log("You won!")
-     };
+            console.log("You won!"); // add modal message
+     } else {
+            console.log("You haven't won yet.");
+     }
     },
+
+    nextCardActions: function(isUserGuessMatch) {
+        if (isUserGuessMatch) { // this section seems to work
+            this.score = this.score + 1;
+            controller.numGuesses = controller.numGuesses + 1;
+            controller.userGuess = [];
+            view.showScore();
+            view.showNumGuesses();
+            this.checkWhetherGameIsWon();
+        }
+        else {
+            setTimeout(view.hideCard, 1500);
+            controller.numGuesses = controller.numGuesses + 1;
+            view.showNumGuesses();
+        }
+    },
+
 
     generateAnimalLocs: function() {
         let locArray = [];
@@ -114,7 +142,4 @@ let model = {
 
 window.onload = controller.init;
 
-
-
-// ******* TESTS ******* //
 
