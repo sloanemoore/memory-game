@@ -16,7 +16,7 @@ let controller = {
         };
         view.showNumGuesses();
         view.showScore();
-}
+        }
     };
 
 let view = {
