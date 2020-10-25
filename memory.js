@@ -45,7 +45,20 @@ let view = {
     showScore: function(score) {
         let scoreDisplay = document.getElementById("score");
         scoreDisplay.innerHTML = model.score;
+    },
+    showWinModal: function() {
+        let modal = document.getElementById("win");
+        let closeButton = document.getElementsByClassName("closeButton")[0];
+        let numCardPairs = document.getElementById("numCardPairs");
+        numCardPairs.innerHTML = model.numCardPairs;
+        let numGuesses = document.getElementById("numGuesses");
+        numGuesses.innerHTML = controller.numGuesses;
+        console.log(numGuesses);
+        console.log(numCardPairs);
+        modal.style.display = "block";
+        closeButton.addEventListener("click", function() { document.getElementById("win").style.display = "none";});
     }
+
 };
 
 let model = {
@@ -95,9 +108,7 @@ let model = {
 
      checkWhetherGameIsWon: function() {
         if (this.score === this.numCardPairs) {
-            console.log("You won!"); // add modal message
-     } else {
-            console.log("You haven't won yet.");
+            view.showWinModal(); // add modal message
      }
     },
 
