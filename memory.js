@@ -13,7 +13,9 @@ let controller = {
         let cards = document.getElementsByTagName("img");
         for (let i = 0; i < (model.numCardPairs * 2); i++) {
             cards[i].onclick = view.showCard;       
-        }
+        };
+        view.showNumGuesses();
+        view.showScore();
 }
     };
 
