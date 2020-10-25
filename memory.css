@@ -13,6 +13,14 @@ div#tableContainer {
   border-spacing: 10px;
 }
 
+div#buttonTableContainer {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-spacing: 50px;
+}
+
 .tableRow {
   display: table-row;
 }
@@ -23,15 +31,40 @@ div#tableContainer {
 }
 
 #back {
-  display: block;
+  display: inline-block;
   margin-top: 60px;
-  margin-left: auto;
-  margin-right: auto;
+  /*margin-left: auto;
+  margin-right: auto; */
+  margin-left: 30px;
+  margin-right: 30px;
   text-align: center;
   background-color: #fbaa19;
-  padding: 15px 40px;
+  padding: 18px 40px;
   color: #666666;
   border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 1.25em;
+}
+
+#footer {
+  margin-bottom: 100px;
+  text-align: center;
+}
+
+#reload {
+  display: inline-block;
+  margin-top: 60px;
+  /*margin-left: auto;
+  margin-right: auto; */
+  margin-left: 30px;
+  margin-right: 30px;
+  text-align: center;
+  background-color: #9ce4e5;
+  padding: 18px 62px;
+  color: #666666;
+  border: none;
+  outline: none;
   border-radius: 5px;
   font-size: 1.25em;
 }
@@ -39,4 +72,8 @@ div#tableContainer {
 a {
   text-decoration: none;
   color: #666666;
+}
+
+a:active {
+  text-decoration: none;
 }
