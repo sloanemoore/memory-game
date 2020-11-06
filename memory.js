@@ -21,6 +21,7 @@ let controller = {
 
 let view = {
     showCard: function(eventObj) {
+        if (controller.userGuess.length < 3) {
         let card = eventObj.target;
         let cardNum = Number(card.id.slice(4)); 
         for (let i = 0; i < model.numCardPairs; i++) {
@@ -31,6 +32,9 @@ let view = {
         }
         controller.userGuess.push(cardNum);
         controller.passUserGuess();
+    } else {
+        view.hideCard();
+        }
     },
     hideCard: function() {
         for (let i = 0; i < controller.userGuess.length; i++) {
@@ -134,7 +138,7 @@ let model = {
     generateAnimalLocs: function() {
         let locArray = [];
         while (locArray.length < (model.numCardPairs * 2)) {
-            let loc = Math.floor(Math.random() * 12);
+            let loc = Math.floor(Math.random() * model.numCardPairs * 2);
             if (!locArray.includes(loc)) {
                 locArray.push(loc);
             };
