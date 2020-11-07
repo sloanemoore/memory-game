@@ -74,39 +74,32 @@ let model = {
     cards: [{
         type: "elephant",
         image: "elephant.png",
-        matched: false,
     },
     {
         type: "giraffe",
         image: "giraffe.png",
-        matched: false,
     },
     {
         type: "lion",
         image: "lion.png",
-        matched: false,
     },{
         type: "turtle",
         image: "turtle.png",
-        matched: false,
     },
     {
         type: "whale",
         image: "whale.png",
-        matched: false,
     },
     {
         type: "zebra",
         image: "zebra.png",
-        matched: false,
     }
      ],
-    checkUserGuess: function(userGuess) { // this seems to work
+    checkUserGuess: function(userGuess) {
         let isUserGuessMatch= false;
         for (let i = 0; i < this.numCardPairs; i++) {
             if (this.cards[i].matchPair.includes(controller.userGuess[0]) && this.cards[i].matchPair.includes(controller.userGuess[1])) {
                 isUserGuessMatch = true;
-                this.cards[i].matched = true;
                 }
             }; 
         this.nextCardActions(isUserGuessMatch);
@@ -114,12 +107,12 @@ let model = {
 
      checkWhetherGameIsWon: function() {
         if (this.score === this.numCardPairs) {
-            view.showWinModal(); // add modal message
+            view.showWinModal();
      }
     },
 
     nextCardActions: function(isUserGuessMatch) {
-        if (isUserGuessMatch) { // this section seems to work
+        if (isUserGuessMatch) { 
             this.score = this.score + 1;
             controller.numGuesses = controller.numGuesses + 1;
             controller.userGuess = [];
@@ -133,8 +126,6 @@ let model = {
             view.showNumGuesses();
         }
     },
-
-
     generateAnimalLocs: function() {
         let locArray = [];
         while (locArray.length < (model.numCardPairs * 2)) {
@@ -158,5 +149,3 @@ let model = {
 };
 
 window.onload = controller.init;
-
-
