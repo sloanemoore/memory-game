@@ -9,7 +9,7 @@ let controller = {
 
     },
     init: function() {
-        model.generateAnimalLocs();
+        model.generateCardLocs();
         let cards = document.getElementsByTagName("img");
         for (let i = 0; i < (model.numCardPairs * 2); i++) {
             cards[i].onclick = view.showCard;       
@@ -110,7 +110,6 @@ let model = {
             view.showWinModal();
      }
     },
-
     nextCardActions: function(isUserGuessMatch) {
         if (isUserGuessMatch) { 
             this.score = this.score + 1;
@@ -126,7 +125,7 @@ let model = {
             view.showNumGuesses();
         }
     },
-    generateAnimalLocs: function() {
+    generateCardLocs: function() {
         let locArray = [];
         while (locArray.length < (model.numCardPairs * 2)) {
             let loc = Math.floor(Math.random() * model.numCardPairs * 2);
@@ -142,7 +141,6 @@ let model = {
             locArrayPairs.push(pair);
         };
         for (let i = 0; i < this.numCardPairs; i++) {
-            console.log(locArrayPairs[i]);
             this.cards[i].matchPair = locArrayPairs[i];
         }
     },
