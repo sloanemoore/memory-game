@@ -120,7 +120,7 @@ let model = {
             this.checkWhetherGameIsWon();
         }
         else {
-            setTimeout(view.hideCard, 50000);
+            setTimeout(view.hideCard, 500);
             controller.numGuesses = controller.numGuesses + 1;
             view.showNumGuesses();
         }
