@@ -21,7 +21,7 @@ let controller = {
 
 let view = {
     showCard: function(eventObj) {
-        if (controller.userGuess.length < 3) {
+        if (controller.userGuess.length < 2) {
         let card = eventObj.target;
         let cardNum = Number(card.id.slice(4)); 
         for (let i = 0; i < model.numCardPairs; i++) {
@@ -120,7 +120,7 @@ let model = {
             this.checkWhetherGameIsWon();
         }
         else {
-            setTimeout(view.hideCard, 500);
+            setTimeout(view.hideCard, 50000);
             controller.numGuesses = controller.numGuesses + 1;
             view.showNumGuesses();
         }
